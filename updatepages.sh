@@ -13,7 +13,7 @@ cd "$(dirname $0)"
 [ -e "$PAGE_DIR" ] && rm -r "$PAGE_DIR"* || mkdir "$PAGE_DIR"
 
 # replace date on each page
-datestr="This page was last updated at $(date +"%H:%M") on $(date +"%m\/%d\/%Y")."
+datestr="<em>This page was last updated at $(date +"%H:%M") on $(date +"%m\/%d\/%Y").<\/em>"
 cd "$PAGE_FILE_DIR"
 for page in *; do
 	sed "s/<!--DATE-->/$datestr/g" "$page" > "../$PAGE_DIR$page"
