@@ -18,7 +18,7 @@ for page in $(find "$PAGE_FILE_DIR" -type f -printf "%P\n"); do
 	[ -e "$PAGE_DIR$page" ] && continue
 	page_dir=$(dirname "$page")
 	[ -d "$PAGE_DIR$page_dir" ] || { mkdir -p "$PAGE_DIR$page_dir"; echo Created \"$PAGE_DIR$page_dir\"; }
-	if [ "${page_dir##*.}" = "html" ]; then
+	if [ "${page##*.}" = "html" ]; then
 		# transformation for HTML files
 		sed "s/<!--DATE-->/$datestr/g" "$PAGE_FILE_DIR$page" > "$PAGE_DIR$page"
 	else
