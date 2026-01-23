@@ -2,7 +2,7 @@
 set -feuo pipefail
 
 PAGES=pages
-SOURCE=page_files
+SOURCE=site
 
 datestr="<em>This page was last updated at $(date +"%H:%M") on $(date +"%m\/%d\/%Y").<\/em>"
 
