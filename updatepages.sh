@@ -1,37 +1,32 @@
 #!/usr/bin/bash
 set -feuo pipefail
 
-# page source directory
-PAGE_FILE_DIR=page_files/
-# page output directory
-PAGE_DIR=pages/
+PAGES=pages
+SOURCE=page_files
 
-# make sure we are in the right directory
-cd "$(dirname $0)"
-
-# check for directory
-[ -e "$PAGE_DIR" ] || mkdir "$PAGE_DIR"
-
-# generate pages that need to be generated
 datestr="<em>This page was last updated at $(date +"%H:%M") on $(date +"%m\/%d\/%Y").<\/em>"
-for page in $(find "$PAGE_FILE_DIR" -type f -printf "%P\n"); do
-	[ -e "$PAGE_DIR$page" ] && continue
-	page_dir=$(dirname "$page")
-	[ -d "$PAGE_DIR$page_dir" ] || { mkdir -p "$PAGE_DIR$page_dir"; echo Created \"$PAGE_DIR$page_dir\"; }
-	if [ "${page##*.}" = "html" ]; then
-		# transformation for HTML files
-		sed "s/<!--DATE-->/$datestr/g" "$PAGE_FILE_DIR$page" > "$PAGE_DIR$page"
-	else
-		# copy other files
-		# TODO make this a hard link instead of a copy to save space
-		#      (need to make sure this works well enough first)
-		cp "$PAGE_FILE_DIR$page" "$PAGE_DIR$page"
-	fi
-	echo Generated \"$PAGE_DIR$page\"
+
+readarray < <(git  diff-tree -r --name-only HEAD^..HEAD | grep -oP "(?<=^$SOURCE/).*\.html$") changes
+
+# delete files to be regenerated
+for file in "${changes[@]}"; do
+	file=${file%$'\n'}
+	echo "Removing \"$PAGES/$file\""
+	[ -f "$PAGES/$file" ] && rm -f "$PAGES/$file"
 done
 
-empty_dirs=$(find "$PAGE_DIR" -type d -empty)
-for empty_dir in $empty_dirs; do
-	rmdir "$empty_dir"
-	echo Removed \"$empty_dir\"
+# regenerate missing files
+for file in $(find "$SOURCE" -type f -name "*.html" -printf "%P\n"); do
+	[ -e "$PAGES/$file" ] && continue
+	dir=$(dirname $file)
+	[ -e "$PAGES/$dir" ] || mkdir -p "$dir"
+	echo "Generating \"$PAGES/$file\""
+	sed "s/<!--DATE-->/$datestr/g" "$SOURCE/$file" > "$PAGES/$file"
+	chmod a-w "$PAGES/$file"
+done
+
+# remove empty directories
+for dir in $(find "$PAGES" -type d -empty); do
+	echo "Removing empty directory \"$dir\""
+	rmdir "$dir"
 done
