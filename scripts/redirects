@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+if [[ -z "${CC_UPDATE+set}" ]]; then
+	echo "Please don't call this script directly (use the \"update\" script)!" >&2
+	exit 1
+fi
+
+if [ ! -d "$PAGES" ]; then
+	echo "Couldn't find directory \"$PAGES\"" >&2
+	exit 1
+fi
+
+# add index.html redirect to all subdirectories
+for dir in $(find "$PAGES" -type d); do
+	index="$dir/index.html"
+	[ -e "$index" ] && continue
+	echo "Creating \"$index\""
+	echo "$REDIRECT" > "$index"
+done

@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+set -feuo pipefail
+
+if [[ -z "${CC_UPDATE+set}" ]]; then
+	echo "Please don't call this script directly!" >&2
+	exit 1
+fi
+
+datestr="<em>This page was last updated at $(date +"%H:%M") on $(date +"%m\/%d\/%Y").<\/em>"
+
+notes=""
+
+note() {
+	notes+="$1\n"
+}
+
+readarray < <(git  diff-tree -r --name-only HEAD^..HEAD | grep -oP "(?<=^$SOURCE/).*\.html$") changes
+
+# make sure output directory exists
+if [ ! -d "$PAGES" ]; then
+	echo "Creating directory \"$PAGES\""
+	mkdir -p "$PAGES"
+	note "You should probably update all of the media"
+fi
+
+# delete files to be regenerated
+for file in "${changes[@]}"; do
+	file=${file%$'\n'}
+	echo "Removing \"$PAGES/$file\""
+	[ -f "$PAGES/$file" ] && rm -f "$PAGES/$file"
+done
+
+# regenerate missing files
+for file in $(find "$SOURCE" -type f -name "*.html" -printf "%P\n"); do
+	source="$SOURCE/$file"
+	page="$PAGES/$file"
+	[ -e "$page" ] && continue
+	dir=$(dirname $file)
+	[ -e "$PAGES/$dir" ] || mkdir -p "$PAGES/$dir"
+	echo "Generating \"$page\""
+	sed "s/<!--DATE-->/$datestr/g" "$source" > "$page"
+	chmod a-w "$page"
+done
+
+# remove empty directories
+for dir in $(find "$PAGES" -type d -empty); do
+	echo "Removing empty directory \"$dir\""
+	rmdir "$dir"
+done
+
+# add index.html redirect to all subdirectories
+for dir in $(find "$PAGES" -type d); do
+	index="$dir/index.html"
+	[ -e "$index" ] && continue
+	echo "Creating \"$index\""
+	echo "$REDIRECT" > "$index"
+done
+
+$CC_UPDATE redirects
+
+[ -z "$notes" ] || echo -e "\nNotes:\n$notes"
