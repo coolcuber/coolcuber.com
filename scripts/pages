@@ -6,7 +6,7 @@ if [[ -z "${CC_UPDATE+set}" ]]; then
 	exit 1
 fi
 
-datestr="<em>This page was last updated at $(date +"%H:%M") on $(date +"%m\/%d\/%Y").<\/em>"
+datestr="<em>This page was last updated at $(date +"%H:%M") on $(date +"%m\/%d\/%Y") (<a href=\"https:\/\/github.com\/coolcuber\/coolcuber.com\" target=\"_blank\">Source<\/a>).<\/em>"
 
 notes=""
 
