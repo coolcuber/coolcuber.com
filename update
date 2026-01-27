@@ -8,11 +8,11 @@ cd "$TOPDIR" || exit 1
 export CC_UPDATE="./update"
 
 # public pages
-export PAGES="./pages"
+export PAGES="pages"
 # source pages
-export SOURCE="./site"
+export SOURCE="site"
 # script directory
-export SCRIPTS="./scripts"
+export SCRIPTS="scripts"
 # redirect link for subdir/index.html
 export REDIR_SITE="https://coolcuber.com"
 
