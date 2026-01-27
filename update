@@ -22,14 +22,22 @@ export REDIR_SITE="https://coolcuber.com"
 # redirect string (overrides .env)
 export REDIRECT="<meta http-equiv=\"refresh\" content=\"0; URL=$REDIR_SITE\">"
 
-if [ x"$#" != x"1" ]; then
-	echo "$0 takes exactly 1 argument ("pages" or "redirects")"
+if [ x"$#" == x"0" ]; then
+	echo "$0 takes at least 1 argument"
 	exit 1
 fi
 
-script="$SCRIPTS/$(basename "$SCRIPTS/$1")"
-if [[ ! $script =~ ^$SCRIPTS/[A-Za-z]+$ ]] || [ ! -f "$script" ] || [ ! -x "$script" ]; then
-	echo "Unknown command: \"$1\"" >&2
-	exit 1
-fi
-exec "$script"
+scripts=()
+
+for var in "$@"; do
+	script="$SCRIPTS/$(basename "$SCRIPTS/$var")"
+	if [[ ! $script =~ ^$SCRIPTS/[A-Za-z\-]+$ ]] || [ ! -f "$script" ] || [ ! -x "$script" ]; then
+		echo "Unknown command: \"$var\"" >&2
+		exit 1
+	fi
+	scripts+=($script)
+done
+
+for script in "${scripts[@]}"; do
+	exec "$script"
+done
