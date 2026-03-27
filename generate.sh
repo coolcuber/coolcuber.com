@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SOURCE="site"
+SOURCE="pages"
 TEMPLATE="template.html"
 
 error() {
