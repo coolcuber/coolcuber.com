@@ -1,3 +1,8 @@
+---
+author: coolcuber
+description: coolcuber's recommended software
+title: Software
+---
 [Home](index.html)\
 
 # Software I recommend
