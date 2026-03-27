@@ -9,8 +9,8 @@ title: Home
 
 I am a graduate student at Clemson University (find my official page [here](https://www.clemson.edu/science/academics/departments/mathstat/about/profiles/rpgeorg){target="\_blank"}).\
 My school email begins with `rpgeorg`.\
-You can also contact me at [irc://irc.libera.chat/coolcuber]("https://libera.chat").\
-My CV can be found [here]("media/cv_public.pdf"){target="\_blank"}.
+You can also contact me at [irc://irc.libera.chat/coolcuber](https://libera.chat).\
+My CV can be found [here](media/cv_public.pdf){target="\_blank"}.
 \
 \
 
