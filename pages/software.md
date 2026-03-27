@@ -21,7 +21,7 @@ pieces of software that I always recommend highly.\
 - Highly customizable\
 - Dedicated online community\
 - Wildly efficient (once you get used to it)\
-- [Neovim](https://neovim.io/) is a great (and very compatible) "modern" alternative
+- [Neovim](https://neovim.io/) is a great (and very compatible) "modern" alternative\
 \
 **Reading PDFs:**
 [Zathura](https://pwmt.org/projects/zathura/){target="\_blank"}\
