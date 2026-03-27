@@ -7,10 +7,11 @@ title: Home
 
 ### About
 
-I am a graduate student at Clemson University (find my official page [here](https://www.clemson.edu/science/academics/departments/mathstat/about/profiles/rpgeorg){target="\_blank"}).\
-My school email begins with `rpgeorg`.\
-You can also contact me at [irc://irc.libera.chat/coolcuber](https://libera.chat).\
-My CV can be found [here](media/cv_public.pdf){target="\_blank"}.
+- I am a graduate student at Clemson University ([SMSS
+  page](https://www.clemson.edu/science/academics/departments/mathstat/about/profiles/rpgeorg){target="\_blank"})
+- My school email begins with `rpgeorg`
+- You can also contact me at [irc://irc.libera.chat/coolcuber](https://libera.chat){target="\_blank"}
+- My CV can be found [here](media/cv_public.pdf){target="\_blank"}
 \
 \
 
@@ -34,12 +35,12 @@ My CV can be found [here](media/cv_public.pdf){target="\_blank"}.
 
 ### Miscellany
 
-If you need help with anything Linux-related, feel free to email me (see above).\
-[Here's](software.html) list of software that I recommend, if you're interested.\
-[Here's](media/cattop.jpg){target="\_blank"} a great picture of my cat.
+- If you need help with anything Linux-related, feel free to email me (see above).
+- [Software I recommend](software.html)
+- [Great cat picture](media/cattop.jpg){target="\_blank"}
+\
+\
 \
 \
 
-
-### Thanks
-Special thanks to the [Virginia Tech Linux and Unix Users Group](https://vtluug.org){target="\_blank"} for hosting this page.
+Special thanks to the [Virginia Tech Linux and Unix Users Group](https://vtluug.org){target="\_blank"} for hosting this site.
