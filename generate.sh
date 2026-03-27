@@ -17,4 +17,5 @@ pandoc --to html \
 	--template "$TEMPLATE" \
 	"$mdfile" \
 	-o "$htmlfile"
+chmod a-w "$htmlfile"
 echo "Created \"$htmlfile\""
