@@ -40,7 +40,6 @@ title: Home
 - [Great cat picture](media/cattop.jpg){target="\_blank"}
 \
 \
-\
-\
 
-Special thanks to the [Virginia Tech Linux and Unix Users Group](https://vtluug.org){target="\_blank"} for hosting this site.
+Special thanks to the [Virginia Tech Linux and Unix Users
+Group](https://vtluug.org){target="\_blank"} for hosting this site.
