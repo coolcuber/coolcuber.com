@@ -6,12 +6,10 @@ title: Software
 
 # Software I recommend
 
-Here are a few common tasks for most students and academics, along with
-the programs I recommend for them. All are free (as in speech) unless
-stated otherwise. Not all of these are [things I use
-daily](https://codeberg.org/coolcuber/coolcuber-nixos){target="\_blank"},
-and some aren\'t even my favorite in their categories, but they are
-pieces of software that I always recommend highly.\
+Here are a few common tasks for most students and academics, along with the programs I recommend for
+them. All are free (as in speech) unless stated otherwise. Not all of these are things I use daily,
+and some aren\'t even my favorite in their categories, but they are pieces of software that I always
+recommend highly.\
 \
 **Calculator/CAS:**
 [Sagemath](https://www.sagemath.org/){target="\_blank"}\
